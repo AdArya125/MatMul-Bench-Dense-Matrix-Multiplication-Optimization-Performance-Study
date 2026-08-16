@@ -1,0 +1,849 @@
+========================================================
+  MatMul-Bench: Full Uninhibited perf Sweep (100 to 10007)
+  Start Time: Sun Aug 16 06:29:49 PM IST 2026
+========================================================
+
+► Compiling perf_sweep_runner.cpp...
+  Compilation complete.
+
+
+==========================================================
+  SWEEP SIZE N = 100
+==========================================================
+
+► Kernel: naive (N=100)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 100' (3 runs):
+
+         7,617,658      cycles                                                                  ( +-  1.00% )
+        11,472,604      instructions                     #    1.51  insn per cycle              ( +-  0.02% )
+           173,656      cache-references                                                        ( +-  1.60% )
+            59,014      cache-misses                     #   33.98% of all cache refs           ( +- 10.68% )
+
+          0.003129 +- 0.000268 seconds time elapsed  ( +-  8.56% )
+
+
+► Kernel: reordered_ikj (N=100)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 100' (3 runs):
+
+         6,112,379      cycles                                                                  ( +-  1.08% )
+        11,428,159      instructions                     #    1.87  insn per cycle              ( +-  0.08% )
+           167,824      cache-references                                                        ( +-  1.88% )
+            56,525      cache-misses                     #   33.68% of all cache refs           ( +-  4.95% )
+
+          0.002765 +- 0.000131 seconds time elapsed  ( +-  4.74% )
+
+
+► Kernel: blocked_64 (N=100)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 100' (3 runs):
+
+         6,598,502      cycles                                                                  ( +-  1.41% )
+        10,654,123      instructions                     #    1.61  insn per cycle              ( +-  0.34% )
+           178,704      cache-references                                                        ( +-  1.52% )
+            57,777      cache-misses                     #   32.33% of all cache refs           ( +-  3.19% )
+
+          0.003347 +- 0.000121 seconds time elapsed  ( +-  3.61% )
+
+
+► Kernel: openmp_4c (N=100)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 100' (3 runs):
+
+        10,491,134      cycles                                                                  ( +-  1.68% )
+        11,823,585      instructions                     #    1.13  insn per cycle              ( +-  0.60% )
+           249,665      cache-references                                                        ( +-  3.70% )
+            82,416      cache-misses                     #   33.01% of all cache refs           ( +-  3.83% )
+
+          0.004070 +- 0.000148 seconds time elapsed  ( +-  3.65% )
+
+
+► Kernel: avx_blocked (N=100)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 100' (3 runs):
+
+         4,830,245      cycles                                                                  ( +-  0.79% )
+         5,738,042      instructions                     #    1.19  insn per cycle              ( +-  0.40% )
+           181,909      cache-references                                                        ( +-  2.16% )
+            66,254      cache-misses                     #   36.42% of all cache refs           ( +-  1.63% )
+
+         0.0032497 +- 0.0000885 seconds time elapsed  ( +-  2.72% )
+
+
+==========================================================
+  SWEEP SIZE N = 127
+==========================================================
+
+► Kernel: naive (N=127)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 127' (3 runs):
+
+        12,074,533      cycles                                                                  ( +-  1.19% )
+        19,479,584      instructions                     #    1.61  insn per cycle              ( +-  0.02% )
+           204,875      cache-references                                                        ( +-  1.03% )
+            75,327      cache-misses                     #   36.77% of all cache refs           ( +-  4.35% )
+
+          0.005280 +- 0.000194 seconds time elapsed  ( +-  3.67% )
+
+
+► Kernel: reordered_ikj (N=127)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 127' (3 runs):
+
+        11,007,307      cycles                                                                  ( +-  7.13% )
+        19,482,236      instructions                     #    1.77  insn per cycle              ( +-  0.05% )
+           281,275      cache-references                                                        ( +-  9.70% )
+            91,604      cache-misses                     #   32.57% of all cache refs           ( +-  1.65% )
+
+          0.006531 +- 0.000640 seconds time elapsed  ( +-  9.80% )
+
+
+► Kernel: blocked_64 (N=127)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 127' (3 runs):
+
+         8,934,131      cycles                                                                  ( +-  1.54% )
+        17,597,508      instructions                     #    1.97  insn per cycle              ( +-  0.05% )
+           180,398      cache-references                                                        ( +-  1.20% )
+            60,279      cache-misses                     #   33.41% of all cache refs           ( +-  9.62% )
+
+          0.003621 +- 0.000190 seconds time elapsed  ( +-  5.25% )
+
+
+► Kernel: openmp_4c (N=127)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 127' (3 runs):
+
+        15,705,213      cycles                                                                  ( +-  1.99% )
+        19,822,591      instructions                     #    1.26  insn per cycle              ( +-  0.13% )
+           290,068      cache-references                                                        ( +-  2.66% )
+            91,420      cache-misses                     #   31.52% of all cache refs           ( +-  3.21% )
+
+          0.004119 +- 0.000130 seconds time elapsed  ( +-  3.16% )
+
+
+► Kernel: avx_blocked (N=127)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 127' (3 runs):
+
+         6,378,873      cycles                                                                  ( +-  6.01% )
+         7,708,634      instructions                     #    1.21  insn per cycle              ( +-  0.18% )
+           221,171      cache-references                                                        ( +-  7.74% )
+            67,090      cache-misses                     #   30.33% of all cache refs           ( +-  7.69% )
+
+          0.003787 +- 0.000188 seconds time elapsed  ( +-  4.97% )
+
+
+==========================================================
+  SWEEP SIZE N = 256
+==========================================================
+
+► Kernel: naive (N=256)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 256' (3 runs):
+
+        74,933,710      cycles                                                                  ( +-  1.90% )
+       128,254,232      instructions                     #    1.71  insn per cycle              ( +-  0.01% )
+        19,066,495      cache-references                                                        ( +-  4.04% )
+           116,858      cache-misses                     #    0.61% of all cache refs           ( +- 13.52% )
+
+           0.02903 +- 0.00280 seconds time elapsed  ( +-  9.66% )
+
+
+► Kernel: reordered_ikj (N=256)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 256' (3 runs):
+
+        36,225,924      cycles                                                                  ( +-  3.97% )
+       127,997,384      instructions                     #    3.53  insn per cycle              ( +-  0.01% )
+         1,584,858      cache-references                                                        ( +- 12.04% )
+           108,613      cache-misses                     #    6.85% of all cache refs           ( +-  8.57% )
+
+          0.014281 +- 0.000988 seconds time elapsed  ( +-  6.92% )
+
+
+► Kernel: blocked_64 (N=256)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 256' (3 runs):
+
+        47,085,721      cycles                                                                  ( +-  6.76% )
+       113,742,726      instructions                     #    2.42  insn per cycle              ( +-  0.04% )
+           533,288      cache-references                                                        ( +- 17.97% )
+           175,762      cache-misses                     #   32.96% of all cache refs           ( +-  7.26% )
+
+           0.02208 +- 0.00222 seconds time elapsed  ( +- 10.04% )
+
+
+► Kernel: openmp_4c (N=256)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 256' (3 runs):
+
+        83,537,722      cycles                                                                  ( +-  1.26% )
+       129,144,454      instructions                     #    1.55  insn per cycle              ( +-  0.12% )
+         1,975,614      cache-references                                                        ( +-  6.06% )
+           162,056      cache-misses                     #    8.20% of all cache refs           ( +-  5.87% )
+
+          0.011693 +- 0.000251 seconds time elapsed  ( +-  2.15% )
+
+
+► Kernel: avx_blocked (N=256)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 256' (3 runs):
+
+        13,236,258      cycles                                                                  ( +-  3.36% )
+        27,325,248      instructions                     #    2.06  insn per cycle              ( +-  0.10% )
+           406,110      cache-references                                                        ( +-  9.77% )
+           101,170      cache-misses                     #   24.91% of all cache refs           ( +- 11.14% )
+
+          0.005995 +- 0.000405 seconds time elapsed  ( +-  6.75% )
+
+
+==========================================================
+  SWEEP SIZE N = 383
+==========================================================
+
+► Kernel: naive (N=383)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 383' (3 runs):
+
+       236,879,542      cycles                                                                  ( +-  1.91% )
+       413,155,571      instructions                     #    1.74  insn per cycle              ( +-  0.03% )
+         7,379,670      cache-references                                                        ( +-  2.88% )
+           207,580      cache-misses                     #    2.81% of all cache refs           ( +-  5.22% )
+
+            0.0781 +- 0.0134 seconds time elapsed  ( +- 17.16% )
+
+
+► Kernel: reordered_ikj (N=383)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 383' (3 runs):
+
+       130,027,330      cycles                                                                  ( +- 18.85% )
+       412,819,572      instructions                     #    3.17  insn per cycle              ( +-  0.02% )
+         7,780,148      cache-references                                                        ( +-  1.47% )
+           280,881      cache-misses                     #    3.61% of all cache refs           ( +- 26.09% )
+
+            0.0524 +- 0.0112 seconds time elapsed  ( +- 21.45% )
+
+
+► Kernel: blocked_64 (N=383)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 383' (3 runs):
+
+       140,963,425      cycles                                                                  ( +-  4.60% )
+       365,389,349      instructions                     #    2.59  insn per cycle              ( +-  0.01% )
+         1,022,427      cache-references                                                        ( +-  8.82% )
+           381,105      cache-misses                     #   37.27% of all cache refs           ( +- 21.45% )
+
+           0.05182 +- 0.00319 seconds time elapsed  ( +-  6.16% )
+
+
+► Kernel: openmp_4c (N=383)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 383' (3 runs):
+
+       245,423,836      cycles                                                                  ( +-  0.16% )
+       416,103,821      instructions                     #    1.70  insn per cycle              ( +-  0.01% )
+         6,989,654      cache-references                                                        ( +-  4.98% )
+           203,875      cache-misses                     #    2.92% of all cache refs           ( +-  8.47% )
+
+          0.026453 +- 0.000222 seconds time elapsed  ( +-  0.84% )
+
+
+► Kernel: avx_blocked (N=383)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 383' (3 runs):
+
+        33,965,157      cycles                                                                  ( +-  8.78% )
+        81,821,541      instructions                     #    2.41  insn per cycle              ( +-  0.03% )
+           792,295      cache-references                                                        ( +- 16.32% )
+           211,896      cache-misses                     #   26.74% of all cache refs           ( +- 16.29% )
+
+           0.01375 +- 0.00103 seconds time elapsed  ( +-  7.50% )
+
+
+==========================================================
+  SWEEP SIZE N = 512
+==========================================================
+
+► Kernel: naive (N=512)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 512' (3 runs):
+
+       905,124,275      cycles                                                                  ( +-  4.02% )
+       974,192,681      instructions                     #    1.08  insn per cycle              ( +-  0.03% )
+       380,746,086      cache-references                                                        ( +-  0.41% )
+           698,560      cache-misses                     #    0.18% of all cache refs           ( +- 11.50% )
+
+            0.3175 +- 0.0161 seconds time elapsed  ( +-  5.06% )
+
+
+► Kernel: reordered_ikj (N=512)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 512' (3 runs):
+
+       242,237,994      cycles                                                                  ( +-  1.67% )
+       971,664,223      instructions                     #    4.01  insn per cycle              ( +-  0.01% )
+        18,559,896      cache-references                                                        ( +-  1.55% )
+           555,395      cache-misses                     #    2.99% of all cache refs           ( +-  6.62% )
+
+           0.09134 +- 0.00919 seconds time elapsed  ( +- 10.06% )
+
+
+► Kernel: blocked_64 (N=512)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 512' (3 runs):
+
+       316,219,617      cycles                                                                  ( +-  3.68% )
+       859,482,928      instructions                     #    2.72  insn per cycle              ( +-  0.01% )
+         6,061,090      cache-references                                                        ( +- 19.39% )
+           897,778      cache-misses                     #   14.81% of all cache refs           ( +- 14.97% )
+
+           0.14383 +- 0.00645 seconds time elapsed  ( +-  4.48% )
+
+
+► Kernel: openmp_4c (N=512)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 512' (3 runs):
+
+       556,660,114      cycles                                                                  ( +-  2.41% )
+       977,225,847      instructions                     #    1.76  insn per cycle              ( +-  0.01% )
+        15,625,185      cache-references                                                        ( +-  2.44% )
+           495,241      cache-misses                     #    3.17% of all cache refs           ( +- 12.25% )
+
+           0.06178 +- 0.00389 seconds time elapsed  ( +-  6.29% )
+
+
+► Kernel: avx_blocked (N=512)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 512' (3 runs):
+
+        71,676,739      cycles                                                                  ( +-  2.38% )
+       168,672,846      instructions                     #    2.35  insn per cycle              ( +-  0.01% )
+         3,965,340      cache-references                                                        ( +-  3.83% )
+           465,005      cache-misses                     #   11.73% of all cache refs           ( +-  0.93% )
+
+           0.03267 +- 0.00266 seconds time elapsed  ( +-  8.15% )
+
+
+==========================================================
+  SWEEP SIZE N = 701
+==========================================================
+
+► Kernel: naive (N=701)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 701' (3 runs):
+
+     1,949,191,534      cycles                                                                  ( +-  1.05% )
+     2,473,358,584      instructions                     #    1.27  insn per cycle              ( +-  0.00% )
+        46,057,840      cache-references                                                        ( +-  3.17% )
+        12,902,599      cache-misses                     #   28.01% of all cache refs           ( +-  6.83% )
+
+            0.6349 +- 0.0180 seconds time elapsed  ( +-  2.83% )
+
+
+► Kernel: reordered_ikj (N=701)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 701' (3 runs):
+
+       667,563,705      cycles                                                                  ( +-  0.30% )
+     2,468,690,420      instructions                     #    3.70  insn per cycle              ( +-  0.00% )
+        45,373,585      cache-references                                                        ( +-  0.17% )
+         5,707,434      cache-misses                     #   12.58% of all cache refs           ( +- 15.32% )
+
+           0.20415 +- 0.00537 seconds time elapsed  ( +-  2.63% )
+
+
+► Kernel: blocked_64 (N=701)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 701' (3 runs):
+
+       791,177,735      cycles                                                                  ( +-  1.42% )
+     2,181,870,053      instructions                     #    2.76  insn per cycle              ( +-  0.01% )
+         3,959,870      cache-references                                                        ( +- 10.16% )
+         1,600,948      cache-misses                     #   40.43% of all cache refs           ( +- 14.28% )
+
+            0.2567 +- 0.0238 seconds time elapsed  ( +-  9.26% )
+
+
+► Kernel: openmp_4c (N=701)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 701' (3 runs):
+
+     1,388,771,636      cycles                                                                  ( +-  3.84% )
+     2,477,138,570      instructions                     #    1.78  insn per cycle              ( +-  0.04% )
+        35,949,976      cache-references                                                        ( +-  7.86% )
+         4,633,773      cache-misses                     #   12.89% of all cache refs           ( +- 16.26% )
+
+           0.15838 +- 0.00916 seconds time elapsed  ( +-  5.78% )
+
+
+► Kernel: avx_blocked (N=701)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 701' (3 runs):
+
+       154,596,118      cycles                                                                  ( +-  4.18% )
+       423,105,154      instructions                     #    2.74  insn per cycle              ( +-  0.02% )
+         2,702,074      cache-references                                                        ( +-  5.72% )
+           957,705      cache-misses                     #   35.44% of all cache refs           ( +- 12.07% )
+
+           0.06455 +- 0.00665 seconds time elapsed  ( +- 10.31% )
+
+
+==========================================================
+  SWEEP SIZE N = 1024
+==========================================================
+
+► Kernel: naive (N=1024)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 1024' (3 runs):
+
+     9,233,626,539      cycles                                                                  ( +-  2.82% )
+     7,662,273,037      instructions                     #    0.83  insn per cycle              ( +-  0.02% )
+     1,781,119,731      cache-references                                                        ( +-  1.43% )
+       140,895,341      cache-misses                     #    7.91% of all cache refs           ( +-  7.16% )
+
+             3.376 +- 0.168 seconds time elapsed  ( +-  4.96% )
+
+
+► Kernel: reordered_ikj (N=1024)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 1024' (3 runs):
+
+     2,167,631,811      cycles                                                                  ( +-  0.95% )
+     7,637,483,393      instructions                     #    3.52  insn per cycle              ( +-  0.01% )
+       143,103,348      cache-references                                                        ( +-  0.46% )
+        62,731,853      cache-misses                     #   43.84% of all cache refs           ( +-  3.98% )
+
+            0.7576 +- 0.0873 seconds time elapsed  ( +- 11.53% )
+
+
+► Kernel: blocked_64 (N=1024)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 1024' (3 runs):
+
+     2,439,416,290      cycles                                                                  ( +-  0.29% )
+     6,745,405,352      instructions                     #    2.77  insn per cycle              ( +-  0.00% )
+       158,159,408      cache-references                                                        ( +-  1.34% )
+         4,976,004      cache-misses                     #    3.15% of all cache refs           ( +-  3.51% )
+
+            0.7814 +- 0.0117 seconds time elapsed  ( +-  1.50% )
+
+
+► Kernel: openmp_4c (N=1024)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 1024' (3 runs):
+
+     3,839,829,528      cycles                                                                  ( +-  3.65% )
+     7,652,484,079      instructions                     #    1.99  insn per cycle              ( +-  0.00% )
+       130,030,898      cache-references                                                        ( +-  3.57% )
+        37,445,867      cache-misses                     #   28.80% of all cache refs           ( +-  6.30% )
+
+            0.4723 +- 0.0183 seconds time elapsed  ( +-  3.87% )
+
+
+► Kernel: avx_blocked (N=1024)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 1024' (3 runs):
+
+       615,648,788      cycles                                                                  ( +-  2.33% )
+     1,221,652,659      instructions                     #    1.98  insn per cycle              ( +-  0.00% )
+       110,455,012      cache-references                                                        ( +-  2.28% )
+         3,065,394      cache-misses                     #    2.78% of all cache refs           ( +-  2.96% )
+
+            0.2511 +- 0.0145 seconds time elapsed  ( +-  5.77% )
+
+
+==========================================================
+  SWEEP SIZE N = 1337
+==========================================================
+
+► Kernel: naive (N=1337)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 1337' (3 runs):
+
+    16,251,157,064      cycles                                                                  ( +-  1.37% )
+    16,971,297,770      instructions                     #    1.04  insn per cycle              ( +-  0.01% )
+       748,037,989      cache-references                                                        ( +-  2.34% )
+       216,321,112      cache-misses                     #   28.92% of all cache refs           ( +-  0.72% )
+
+             5.329 +- 0.165 seconds time elapsed  ( +-  3.10% )
+
+
+► Kernel: reordered_ikj (N=1337)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 1337' (3 runs):
+
+     5,012,958,192      cycles                                                                  ( +-  2.08% )
+    16,939,034,638      instructions                     #    3.38  insn per cycle              ( +-  0.00% )
+       320,611,320      cache-references                                                        ( +-  0.10% )
+       196,670,639      cache-misses                     #   61.34% of all cache refs           ( +-  2.56% )
+
+             1.963 +- 0.138 seconds time elapsed  ( +-  7.03% )
+
+
+► Kernel: blocked_64 (N=1337)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 1337' (3 runs):
+
+     5,468,356,224      cycles                                                                  ( +-  0.67% )
+    14,958,411,548      instructions                     #    2.74  insn per cycle              ( +-  0.00% )
+        27,555,302      cache-references                                                        ( +-  2.92% )
+        11,503,812      cache-misses                     #   41.75% of all cache refs           ( +-  2.54% )
+
+            1.7051 +- 0.0164 seconds time elapsed  ( +-  0.96% )
+
+
+► Kernel: openmp_4c (N=1337)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 1337' (3 runs):
+
+     8,378,207,884      cycles                                                                  ( +-  2.55% )
+    16,964,396,821      instructions                     #    2.02  insn per cycle              ( +-  0.01% )
+       308,804,245      cache-references                                                        ( +-  2.16% )
+       142,079,539      cache-misses                     #   46.01% of all cache refs           ( +-  3.25% )
+
+            1.0539 +- 0.0431 seconds time elapsed  ( +-  4.09% )
+
+
+► Kernel: avx_blocked (N=1337)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 1337' (3 runs):
+
+     1,116,965,097      cycles                                                                  ( +- 13.43% )
+     2,676,022,411      instructions                     #    2.40  insn per cycle              ( +-  0.04% )
+        19,277,274      cache-references                                                        ( +- 25.72% )
+         7,350,045      cache-misses                     #   38.13% of all cache refs           ( +- 16.17% )
+
+            0.4815 +- 0.0695 seconds time elapsed  ( +- 14.43% )
+
+
+==========================================================
+  SWEEP SIZE N = 2048
+==========================================================
+
+► Kernel: naive (N=2048)
+
+ Performance counter stats for './bin/perf_sweep_runner naive 2048' (3 runs):
+
+   180,209,768,426      cycles                                                                  ( +-  0.74% )
+    61,112,734,803      instructions                     #    0.34  insn per cycle              ( +-  0.01% )
+    11,807,539,931      cache-references                                                        ( +-  0.90% )
+     6,058,768,978      cache-misses                     #   51.31% of all cache refs           ( +-  1.15% )
+
+            59.329 +- 0.342 seconds time elapsed  ( +-  0.58% )
+
+
+► Kernel: reordered_ikj (N=2048)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 2048' (3 runs):
+
+    18,164,440,699      cycles                                                                  ( +-  2.59% )
+    60,637,813,422      instructions                     #    3.34  insn per cycle              ( +-  0.01% )
+     1,152,200,200      cache-references                                                        ( +-  0.56% )
+       784,217,601      cache-misses                     #   68.06% of all cache refs           ( +-  1.90% )
+
+             6.605 +- 0.789 seconds time elapsed  ( +- 11.95% )
+
+
+► Kernel: blocked_64 (N=2048)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 2048' (3 runs):
+
+    19,571,674,625      cycles                                                                  ( +-  0.17% )
+    53,536,015,843      instructions                     #    2.74  insn per cycle              ( +-  0.01% )
+     1,221,678,834      cache-references                                                        ( +-  0.91% )
+        44,595,097      cache-misses                     #    3.65% of all cache refs           ( +-  2.32% )
+
+             7.004 +- 0.347 seconds time elapsed  ( +-  4.95% )
+
+
+► Kernel: openmp_4c (N=2048)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 2048' (3 runs):
+
+    32,586,797,500      cycles                                                                  ( +-  4.58% )
+    60,723,979,082      instructions                     #    1.86  insn per cycle              ( +-  0.02% )
+     1,068,739,935      cache-references                                                        ( +-  5.61% )
+       658,743,028      cache-misses                     #   61.64% of all cache refs           ( +-  5.97% )
+
+             4.113 +- 0.219 seconds time elapsed  ( +-  5.32% )
+
+
+► Kernel: avx_blocked (N=2048)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 2048' (3 runs):
+
+     5,094,839,652      cycles                                                                  ( +-  2.27% )
+     9,338,363,682      instructions                     #    1.83  insn per cycle              ( +-  0.02% )
+       850,295,595      cache-references                                                        ( +-  1.13% )
+        28,179,552      cache-misses                     #    3.31% of all cache refs           ( +-  7.32% )
+
+             1.995 +- 0.227 seconds time elapsed  ( +- 11.36% )
+
+
+==========================================================
+  SWEEP SIZE N = 3001
+==========================================================
+
+► Kernel: reordered_ikj (N=3001)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 3001' (3 runs):
+
+    55,346,683,946      cycles                                                                  ( +-  0.16% )
+   190,319,032,196      instructions                     #    3.44  insn per cycle              ( +-  0.00% )
+     3,637,635,598      cache-references                                                        ( +-  0.25% )
+     2,519,953,811      cache-misses                     #   69.27% of all cache refs           ( +-  0.16% )
+
+            19.319 +- 0.208 seconds time elapsed  ( +-  1.08% )
+
+
+► Kernel: blocked_64 (N=3001)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 3001' (3 runs):
+
+    62,521,907,961      cycles                                                                  ( +-  1.07% )
+   168,033,187,381      instructions                     #    2.69  insn per cycle              ( +-  0.00% )
+       353,032,099      cache-references                                                        ( +-  4.21% )
+       153,387,048      cache-misses                     #   43.45% of all cache refs           ( +-  4.41% )
+
+            22.744 +- 0.806 seconds time elapsed  ( +-  3.55% )
+
+
+► Kernel: openmp_4c (N=3001)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 3001' (3 runs):
+
+    96,882,021,237      cycles                                                                  ( +-  1.84% )
+   190,545,536,346      instructions                     #    1.97  insn per cycle              ( +-  0.01% )
+     3,624,882,054      cache-references                                                        ( +-  0.20% )
+     2,386,361,121      cache-misses                     #   65.83% of all cache refs           ( +-  0.06% )
+
+            11.528 +- 0.131 seconds time elapsed  ( +-  1.14% )
+
+
+► Kernel: avx_blocked (N=3001)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 3001' (3 runs):
+
+    11,261,305,566      cycles                                                                  ( +-  3.65% )
+    29,025,393,749      instructions                     #    2.58  insn per cycle              ( +-  0.01% )
+       176,040,386      cache-references                                                        ( +-  8.13% )
+        82,019,203      cache-misses                     #   46.59% of all cache refs           ( +-  5.69% )
+
+             4.353 +- 0.365 seconds time elapsed  ( +-  8.39% )
+
+
+==========================================================
+  SWEEP SIZE N = 4096
+==========================================================
+
+► Kernel: reordered_ikj (N=4096)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 4096' (3 runs):
+
+   141,315,086,456      cycles                                                                  ( +-  0.57% )
+   483,263,386,531      instructions                     #    3.42  insn per cycle              ( +-  0.00% )
+     9,281,389,343      cache-references                                                        ( +-  0.20% )
+     6,450,089,225      cache-misses                     #   69.49% of all cache refs           ( +-  0.35% )
+
+            50.274 +- 0.817 seconds time elapsed  ( +-  1.62% )
+
+
+► Kernel: blocked_64 (N=4096)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 4096' (3 runs):
+
+   158,009,899,026      cycles                                                                  ( +-  0.30% )
+   426,595,188,784      instructions                     #    2.70  insn per cycle              ( +-  0.00% )
+     9,811,762,247      cache-references                                                        ( +-  0.08% )
+       373,747,520      cache-misses                     #    3.81% of all cache refs           ( +-  0.63% )
+
+            56.167 +- 0.376 seconds time elapsed  ( +-  0.67% )
+
+
+► Kernel: openmp_4c (N=4096)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 4096' (3 runs):
+
+   246,530,694,619      cycles                                                                  ( +-  0.37% )
+   483,830,811,487      instructions                     #    1.96  insn per cycle              ( +-  0.01% )
+     9,531,733,639      cache-references                                                        ( +-  0.35% )
+     6,423,582,753      cache-misses                     #   67.39% of all cache refs           ( +-  0.20% )
+
+            29.025 +- 0.451 seconds time elapsed  ( +-  1.55% )
+
+
+► Kernel: avx_blocked (N=4096)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 4096' (3 runs):
+
+    38,738,043,559      cycles                                                                  ( +-  0.73% )
+    73,026,278,295      instructions                     #    1.89  insn per cycle              ( +-  0.01% )
+     6,595,709,061      cache-references                                                        ( +-  0.34% )
+       235,958,432      cache-misses                     #    3.58% of all cache refs           ( +-  2.17% )
+
+            13.729 +- 0.920 seconds time elapsed  ( +-  6.70% )
+
+
+==========================================================
+  SWEEP SIZE N = 6143
+==========================================================
+
+► Kernel: reordered_ikj (N=6143)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 6143' (3 runs):
+
+   476,744,797,940      cycles                                                                  ( +-  0.14% )
+ 1,628,173,193,514      instructions                     #    3.42  insn per cycle              ( +-  0.00% )
+    31,272,894,585      cache-references                                                        ( +-  0.08% )
+    21,907,529,808      cache-misses                     #   70.05% of all cache refs           ( +-  0.15% )
+
+            167.54 +- 1.27 seconds time elapsed  ( +-  0.76% )
+
+
+► Kernel: blocked_64 (N=6143)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 6143' (3 runs):
+
+   532,280,013,808      cycles                                                                  ( +-  0.24% )
+ 1,437,177,713,141      instructions                     #    2.70  insn per cycle              ( +-  0.00% )
+    28,505,780,711      cache-references                                                        ( +-  0.40% )
+     1,254,212,267      cache-misses                     #    4.40% of all cache refs           ( +-  0.92% )
+
+            188.18 +- 2.60 seconds time elapsed  ( +-  1.38% )
+
+
+► Kernel: openmp_4c (N=6143)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 6143' (3 runs):
+
+   842,297,973,124      cycles                                                                  ( +-  0.79% )
+ 1,630,106,900,174      instructions                     #    1.94  insn per cycle              ( +-  0.00% )
+    33,103,521,370      cache-references                                                        ( +-  0.07% )
+    22,214,999,272      cache-misses                     #   67.11% of all cache refs           ( +-  0.07% )
+
+             96.37 +- 1.17 seconds time elapsed  ( +-  1.22% )
+
+
+► Kernel: avx_blocked (N=6143)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 6143' (3 runs):
+
+   146,503,975,525      cycles                                                                  ( +-  0.20% )
+   245,944,860,708      instructions                     #    1.68  insn per cycle              ( +-  0.00% )
+    17,728,974,821      cache-references                                                        ( +-  0.18% )
+       852,585,924      cache-misses                     #    4.81% of all cache refs           ( +-  0.08% )
+
+            50.210 +- 0.560 seconds time elapsed  ( +-  1.11% )
+
+
+==========================================================
+  SWEEP SIZE N = 8192
+==========================================================
+
+► Kernel: reordered_ikj (N=8192)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 8192' (3 runs):
+
+ 1,143,123,808,855      cycles                                                                  ( +-  0.33% )
+ 3,858,955,946,203      instructions                     #    3.38  insn per cycle              ( +-  0.00% )
+    74,708,619,116      cache-references                                                        ( +-  0.15% )
+    50,796,779,239      cache-misses                     #   67.99% of all cache refs           ( +-  0.02% )
+
+            404.82 +- 2.61 seconds time elapsed  ( +-  0.64% )
+
+
+► Kernel: blocked_64 (N=8192)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 8192' (3 runs):
+
+ 1,319,866,360,444      cycles                                                                  ( +-  0.80% )
+ 3,406,550,195,297      instructions                     #    2.58  insn per cycle              ( +-  0.00% )
+    80,005,507,322      cache-references                                                        ( +-  0.23% )
+     3,428,997,647      cache-misses                     #    4.29% of all cache refs           ( +-  1.22% )
+
+            483.44 +- 6.78 seconds time elapsed  ( +-  1.40% )
+
+
+► Kernel: openmp_4c (N=8192)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 8192' (3 runs):
+
+ 2,088,332,136,118      cycles                                                                  ( +-  0.57% )
+ 3,864,824,088,625      instructions                     #    1.85  insn per cycle              ( +-  0.00% )
+    83,462,000,247      cache-references                                                        ( +-  0.06% )
+    52,657,149,961      cache-misses                     #   63.09% of all cache refs           ( +-  0.07% )
+
+            248.35 +- 3.05 seconds time elapsed  ( +-  1.23% )
+
+
+► Kernel: avx_blocked (N=8192)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 8192' (3 runs):
+
+   310,349,482,016      cycles                                                                  ( +-  0.40% )
+   577,572,817,216      instructions                     #    1.86  insn per cycle              ( +-  0.00% )
+    52,664,909,613      cache-references                                                        ( +-  0.38% )
+     2,139,147,345      cache-misses                     #    4.06% of all cache refs           ( +-  0.55% )
+
+            111.80 +- 1.58 seconds time elapsed  ( +-  1.42% )
+
+
+==========================================================
+  SWEEP SIZE N = 10007
+==========================================================
+
+► Kernel: reordered_ikj (N=10007)
+
+ Performance counter stats for './bin/perf_sweep_runner reordered_ikj 10007' (3 runs):
+
+ 2,102,838,650,466      cycles                                                                  ( +-  1.19% )
+ 7,031,930,825,044      instructions                     #    3.34  insn per cycle              ( +-  0.00% )
+   140,104,933,088      cache-references                                                        ( +-  0.16% )
+    94,425,368,216      cache-misses                     #   67.40% of all cache refs           ( +-  0.04% )
+
+            749.95 +- 14.27 seconds time elapsed  ( +-  1.90% )
+
+
+► Kernel: blocked_64 (N=10007)
+
+ Performance counter stats for './bin/perf_sweep_runner blocked_64 10007' (3 runs):
+
+ 2,312,698,219,228      cycles                                                                  ( +-  0.08% )
+ 6,207,192,173,049      instructions                     #    2.68  insn per cycle              ( +-  0.00% )
+    14,913,135,250      cache-references                                                        ( +-  0.33% )
+     6,142,350,507      cache-misses                     #   41.19% of all cache refs           ( +-  0.30% )
+
+           809.332 +- 0.701 seconds time elapsed  ( +-  0.09% )
+
+
+► Kernel: openmp_4c (N=10007)
+
+ Performance counter stats for './bin/perf_sweep_runner openmp_4c 10007' (3 runs):
+
+ 3,672,935,665,540      cycles                                                                  ( +-  0.13% )
+ 7,040,402,726,663      instructions                     #    1.92  insn per cycle              ( +-  0.00% )
+   158,690,089,931      cache-references                                                        ( +-  0.14% )
+    96,907,746,461      cache-misses                     #   61.07% of all cache refs           ( +-  0.04% )
+
+            420.76 +- 2.27 seconds time elapsed  ( +-  0.54% )
+
+
+► Kernel: avx_blocked (N=10007)
+
+ Performance counter stats for './bin/perf_sweep_runner avx_blocked 10007' (3 runs):
+
+   413,362,935,040      cycles                                                                  ( +-  0.07% )
+ 1,055,084,484,242      instructions                     #    2.55  insn per cycle              ( +-  0.00% )
+     5,898,276,166      cache-references                                                        ( +-  0.07% )
+     3,341,917,954      cache-misses                     #   56.66% of all cache refs           ( +-  0.07% )
+
+            146.06 +- 1.01 seconds time elapsed  ( +-  0.69% )
+
+
+========================================================
+  perf Full Sweep Complete! Results saved to results/benchmarks/perf_sweep_results.txt
+  End Time: Sun Aug 16 09:58:58 PM IST 2026
+========================================================

@@ -14,11 +14,11 @@ make all
 # Run unified CPU benchmark (CSV output)
 make benchmark
 
-# Run Linux perf hardware counter analysis
-make perf
+# Run Linux perf hardware counter size sweep (100 to 10007)
+bash scripts/run_perf_sweep.sh
 
-# Run Valgrind Cachegrind simulation
-make cachegrind
+# Run matrix size benchmark sweep
+bash scripts/run_sweep.sh
 ```
 
 ### Individual Target Execution
@@ -32,9 +32,11 @@ N=1024 make run-mpi
 N=2048 make run-cuda
 ```
 
-## Summary Performance Benchmark (N = 1024)
+## Summary Performance Benchmark (N = 1024 & N = 10007)
 
 Tested on Intel Core i5-9300H CPU @ 2.40GHz (4 physical cores) & NVIDIA GeForce GTX 1650 GPU (896 CUDA cores):
+
+### Benchmark at N = 1024
 
 | Implementation | Source File | Time (ms) | Throughput (GFLOP/s) | Speedup vs Naive | Key Optimization Mechanism |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -47,6 +49,15 @@ Tested on Intel Core i5-9300H CPU @ 2.40GHz (4 physical cores) & NVIDIA GeForce 
 | **CUDA Tiled (Shared Mem)**| [`src/cuda.cu`](file:///mnt/SSD_512_win/Linux/College-Backup/Projects-Aug/matrix-multiplication-optimization/src/cuda.cu) | **5.84 ms** | **367.92 GFLOP/s** | **377.27x** | On-chip Shared Memory SRAM tiling (32x32). |
 | **MPI (4 Processes)** | [`src/mpi.cpp`](file:///mnt/SSD_512_win/Linux/College-Backup/Projects-Aug/matrix-multiplication-optimization/src/mpi.cpp) | 354.08 ms | 6.20 GFLOP/s | **6.22x** | Row-sliced message passing distribution. |
 | **Hybrid MPI + OpenMP** | [`src/hybrid.cpp`](file:///mnt/SSD_512_win/Linux/College-Backup/Projects-Aug/matrix-multiplication-optimization/src/hybrid.cpp) | 340.95 ms | 6.30 GFLOP/s | **6.46x** | Inter-node MPI + intra-node OpenMP threads. |
+
+### Massive Matrix Size Sweep at N = 10007 (2.004 Trillion FLOPs)
+
+| Implementation | CPU Cycles | Instructions | IPC | L3 Cache Misses | Time per run | Throughput |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **`reordered_ikj`** | 2.10 Trillion | 7.03 Trillion | **3.34** | 94.42 Billion (67.4%) | 249.98 s | 2.50 GFLOP/s |
+| **`blocked_64`** | 2.31 Trillion | 6.20 Trillion | **2.68** | 6.14 Billion (41.2%) | 269.77 s | 2.68 GFLOP/s |
+| **`openmp_4c`** | 3.67 Trillion | 7.04 Trillion | **1.92** | 96.90 Billion (61.1%) | 140.25 s | 5.88 GFLOP/s |
+| **`avx_blocked`** | **0.41 Trillion** | **1.05 Trillion** | **2.55** | **3.34 Billion (56.7%)** | **48.68 s** | **14.44 GFLOP/s** |
 
 ## Repository Structure
 
@@ -64,11 +75,18 @@ matrix-multiplication-optimization/
 │   ├── mpi.cpp              # Distributed memory MPI row distribution
 │   └── hybrid.cpp           # MPI + OpenMP hybrid parallelism
 ├── benchmark/
-│   └── benchmark.cpp        # Unified CSV benchmark driver
+│   ├── benchmark.cpp        # Unified CSV benchmark driver
+│   ├── benchmark_sweep.cpp  # Size sweep runner (100 to 10007)
+│   └── perf_sweep_runner.cpp# Single-kernel runner for perf stat sweep
 ├── scripts/
-│   ├── benchmark.sh         # Full automated benchmark suite
+│   ├── run_sweep.sh         # Real-time CSV size-sweep script
+│   ├── run_perf_sweep.sh    # Full perf hardware counter sweep (100 to 10007)
 │   ├── perf.sh              # Linux perf hardware counter script
 │   └── cachegrind.sh        # Valgrind Cachegrind simulation script
+├── results/
+│   └── benchmarks/
+│       ├── sweep_results.csv# Matrix sweep dataset (100 to 10007)
+│       └── perf_sweep_results.txt # Full Linux perf hardware sweep log
 ├── ANALYSIS_REPORT.md       # Comprehensive empirical performance report
 ├── notes.md                 # Technical reference & profiling guide
 ├── Makefile                 # Build system configuration
@@ -77,9 +95,9 @@ matrix-multiplication-optimization/
 
 ## Hardware Profiling & Empirical Verification
 
-### 1. Linux `perf` Hardware Counters (`perf stat`)
-- **IPC (Instructions Per Cycle)**: Increases from **1.10 IPC** (Naive) to **3.48 IPC** (AVX SIMD).
-- **Cache Requests**: AVX SIMD reduces L3 cache memory bus requests from **1.517 Billion down to 166 Million** (an 89% reduction in cache requests).
+### 1. Full Linux `perf` Hardware Counter Sweep (100 to 10007)
+- **IPC (Instructions Per Cycle)**: Reordered `i-k-j` achieves **3.34 to 3.52 IPC**, while `avx_blocked` achieves **2.55 IPC**.
+- **10k Memory Bus Reduction**: At N=10007, `avx_blocked` reduces cache references from **140.1 Billion down to 5.89 Billion (a 23.8x reduction in memory requests)**.
 
 ### 2. Valgrind Cachegrind (`cg_annotate --show=Dr,D1mr,DLmr`)
 - **L1 Data Cache Misses**: Loop reordering (`i-k-j`) drops L1 data read misses from **67.4 Million down to 4.2 Million** (N=256), reducing L1 miss rate from **50.21% to 3.14%**.
