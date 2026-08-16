@@ -75,7 +75,7 @@ matrix-multiplication-optimization/
 └── README.md
 ```
 
-## Hardware Profiling & Verification
+## Hardware Profiling & Empirical Verification
 
 ### 1. Linux `perf` Hardware Counters (`perf stat`)
 - **IPC (Instructions Per Cycle)**: Increases from **1.10 IPC** (Naive) to **3.48 IPC** (AVX SIMD).
@@ -83,6 +83,10 @@ matrix-multiplication-optimization/
 
 ### 2. Valgrind Cachegrind (`cg_annotate --show=Dr,D1mr,DLmr`)
 - **L1 Data Cache Misses**: Loop reordering (`i-k-j`) drops L1 data read misses from **67.4 Million down to 4.2 Million** (N=256), reducing L1 miss rate from **50.21% to 3.14%**.
+
+### 3. NVIDIA Nsight Compute & `nvprof` (`ncu`, `nvprof`)
+- **GPU Shared Memory Tiling**: Shared Memory SRAM tiling saves **6.0 ms of GPU DRAM stall time** compared to naive CUDA global memory access.
+- **Hardware SM Occupancy & Sol**: Profiling via `ncu` verified **100.0% active warp GPU occupancy** (`sm__warps_active`) and **71.3% peak sustained SM compute throughput** (`sm__throughput`) on the GeForce GTX 1650.
 
 ## Documentation
 - **Full Empirical Benchmark Report**: [`ANALYSIS_REPORT.md`](file:///mnt/SSD_512_win/Linux/College-Backup/Projects-Aug/matrix-multiplication-optimization/ANALYSIS_REPORT.md)
