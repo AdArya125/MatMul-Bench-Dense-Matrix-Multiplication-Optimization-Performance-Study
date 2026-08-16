@@ -1,0 +1,29 @@
+naive i-j-k N=512
+  run 1: 335.354 ms
+  run 2: 362.559 ms
+  run 3: 377.885 ms
+
+best: 335.354 ms | 0.800 GFLOP/s
+naive i-j-k N=512
+  run 1: 337.036 ms
+  run 2: 331.974 ms
+  run 3: 315.827 ms
+
+best: 315.827 ms | 0.850 GFLOP/s
+naive i-j-k N=512
+  run 1: 354.209 ms
+  run 2: 343.576 ms
+  run 3: 345.811 ms
+
+best: 343.576 ms | 0.781 GFLOP/s
+
+ Performance counter stats for './bin/naive_perf 512' (3 runs):
+
+     3,761,104,501      cycles                                                                  ( +-  2.63% )
+     3,814,516,974      instructions                     #    1.01  insn per cycle              ( +-  0.04% )
+     1,529,377,523      cache-references                                                        ( +-  0.31% )
+         4,301,983      cache-misses                     #    0.28% of all cache refs           ( +- 12.36% )
+         1,170,383      branch-misses                                                           ( +-  1.06% )
+
+            1.3763 +- 0.0351 seconds time elapsed  ( +-  2.55% )
+

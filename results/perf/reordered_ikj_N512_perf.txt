@@ -1,0 +1,35 @@
+Loop-reordered matmul N=512
+
+i-j-k (naive)          512x512        312.089 ms      0.86 GFLOP/s
+i-k-j (best)           512x512         68.864 ms      3.90 GFLOP/s
+j-k-i (worst)          512x512        771.752 ms      0.35 GFLOP/s
+
+Speedup i-k-j over i-j-k: 4.53x
+Slowdown j-k-i vs i-j-k:  2.47x
+Loop-reordered matmul N=512
+
+i-j-k (naive)          512x512        305.657 ms      0.88 GFLOP/s
+i-k-j (best)           512x512         97.607 ms      2.75 GFLOP/s
+j-k-i (worst)          512x512        907.090 ms      0.30 GFLOP/s
+
+Speedup i-k-j over i-j-k: 3.13x
+Slowdown j-k-i vs i-j-k:  2.97x
+Loop-reordered matmul N=512
+
+i-j-k (naive)          512x512        368.960 ms      0.73 GFLOP/s
+i-k-j (best)           512x512         89.845 ms      2.99 GFLOP/s
+j-k-i (worst)          512x512        830.191 ms      0.32 GFLOP/s
+
+Speedup i-k-j over i-j-k: 4.11x
+Slowdown j-k-i vs i-j-k:  2.25x
+
+ Performance counter stats for './bin/ikj_perf 512' (3 runs):
+
+    15,159,375,809      cycles                                                                  ( +-  1.20% )
+    12,459,487,285      instructions                     #    0.82  insn per cycle              ( +-  0.01% )
+     4,937,200,284      cache-references                                                        ( +-  0.26% )
+        54,935,476      cache-misses                     #    1.11% of all cache refs           ( +-  5.48% )
+         3,455,977      branch-misses                                                           ( +-  0.72% )
+
+            5.4970 +- 0.0813 seconds time elapsed  ( +-  1.48% )
+

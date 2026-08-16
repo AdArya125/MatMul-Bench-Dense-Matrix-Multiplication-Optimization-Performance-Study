@@ -1,0 +1,35 @@
+AVX/AVX2 SIMD matmul N=512
+
+scalar i-k-j           139.789 ms | 1.92 GFLOP/s | OK
+avx i-k-j               31.170 ms | 8.61 GFLOP/s | OK
+avx+blocked-64          30.995 ms | 8.66 GFLOP/s | OK
+
+Speedup AVX over scalar:       4.48x
+Speedup AVX+block over scalar: 4.51x
+AVX/AVX2 SIMD matmul N=512
+
+scalar i-k-j           117.505 ms | 2.28 GFLOP/s | OK
+avx i-k-j               24.357 ms | 11.02 GFLOP/s | OK
+avx+blocked-64          42.484 ms | 6.32 GFLOP/s | OK
+
+Speedup AVX over scalar:       4.82x
+Speedup AVX+block over scalar: 2.77x
+AVX/AVX2 SIMD matmul N=512
+
+scalar i-k-j            69.668 ms | 3.85 GFLOP/s | OK
+avx i-k-j               25.973 ms | 10.33 GFLOP/s | OK
+avx+blocked-64          24.003 ms | 11.18 GFLOP/s | OK
+
+Speedup AVX over scalar:       2.68x
+Speedup AVX+block over scalar: 2.90x
+
+ Performance counter stats for './bin/avx_perf 512' (3 runs):
+
+     2,314,841,083      cycles                                                                  ( +-  6.80% )
+     5,732,958,143      instructions                     #    2.48  insn per cycle              ( +-  0.01% )
+       175,490,021      cache-references                                                        ( +-  0.87% )
+        17,817,584      cache-misses                     #   10.15% of all cache refs           ( +- 22.96% )
+         1,627,746      branch-misses                                                           ( +-  0.72% )
+
+            1.0685 +- 0.0773 seconds time elapsed  ( +-  7.23% )
+
